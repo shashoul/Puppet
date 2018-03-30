@@ -48,3 +48,15 @@ exec { 'enable dashboard':
   command => 'sudo minikube addons enable dashboard',
   path    => '/usr/bin'
 }
+
+exec { 'create nginx deployment':
+  command => 'sudo kubectl run mynginx --image=nginx --port=80',
+  path    => '/usr/bin'
+}
+
+exec { 'create mynginx service':
+  command => 'sudo kubectl expose deployment mynginx --type=LoadBalancer',
+  path    => '/usr/bin'
+  }
+# sudo kubectl run mynginx --image=nginx --port=80
+# sudo kubectl expose deployment mynginx --type=LoadBalancer
