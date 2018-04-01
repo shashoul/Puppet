@@ -32,30 +32,6 @@ exec { 'move minikube kubectl to /usr/local/bin':
   command => 'sudo mv minikube /usr/local/bin/ && sudo mv kubectl /usr/local/bin/',
   path    => '/usr/bin'
 }
-#exec { 'chmod +x minikube':
-#  command => 'chmod +x minikube',
-#  path    => '/bin'
-#}
-
-#exec { 'sudocmd':
-#  command => 'sudo mv minikube /usr/local/bin/',
-#  path    => '/usr/bin'
-#}
-
-#exec { 'curl2':
-#  command => 'curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.9.4/bin/linux/amd64/kubectl',
-#  path    => '/usr/bin'
-#}
-
-#exec { 'chmod +x kubectl':
-#  command => 'chmod +x kubectl',
-#  path    => '/bin'
-#}
-
-#exec { 'sudocmd2':
-#  command => 'sudo mv kubectl /usr/local/bin/',
-#  path    => '/usr/bin'
-#}
 
 exec { 'start minikube':
   command => 'sudo minikube start --vm-driver=none',
@@ -76,5 +52,3 @@ exec { 'create nginx service(mynginx)':
   command => 'sudo kubectl expose deployment mynginx --type=LoadBalancer',
   path    => '/usr/bin'
   }
-# sudo kubectl run mynginx --image=nginx --port=80
-# sudo kubectl expose deployment mynginx --type=LoadBalancer
